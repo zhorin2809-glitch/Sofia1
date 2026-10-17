@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff3f7">
+<title>Сонечка, сколько всего впереди</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--rose:#f3a6c1;--berry:#d96696;--ink:#493743;--muted:#8d7481;--paper:#fffdfb;--lilac:#e9e0ff;--butter:#fff0bd;--mint:#ddf3e4;--peach:#ffe1d8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Manrope,system-ui,sans-serif;background:radial-gradient(circle at 0% 10%,#ffe3ee 0,transparent 28%),radial-gradient(circle at 100% 70%,#e7e0ff 0,transparent 32%),#fff9f8;overflow-x:hidden}
+button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #8d5cc6;outline-offset:3px}
+.float{position:fixed;z-index:0;pointer-events:none;opacity:.65;font-size:clamp(19px,3vw,35px);animation:drift 7s ease-in-out infinite}.f1{top:8%;left:4%}.f2{top:22%;right:5%;animation-delay:-2s}.f3{bottom:12%;left:7%;animation-delay:-4s}.f4{bottom:7%;right:7%;animation-delay:-1s}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-14px) rotate(7deg)}}
+.shell{position:relative;z-index:1;width:min(960px,100%);margin:auto;padding:20px 15px 35px}
+.top{max-width:790px;margin:0 auto 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-family:Comfortaa,cursive;font-size:12px;font-weight:700}.chapter{font-size:11px;color:var(--muted);white-space:nowrap}
+.progress{height:6px;max-width:790px;margin:0 auto 18px;background:#f5dce6;border-radius:30px;overflow:hidden}.progress span{height:100%;display:block;width:7.14%;background:linear-gradient(90deg,#ef9fbc,#b9a0ec);border-radius:30px;transition:width .4s}
+.scene{display:none;max-width:790px;margin:auto;min-height:570px;background:rgba(255,255,255,.89);border:1px solid #fff;box-shadow:0 20px 70px #b76e8b1a;border-radius:30px;padding:clamp(23px,5vw,55px);position:relative;overflow:hidden;animation:enter .42s ease both}.scene.active{display:block}
+@keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{display:inline-block;padding:8px 12px;border-radius:99px;background:#fff0f5;color:#a24f76;font-size:10px;letter-spacing:.09em;font-weight:800;text-transform:uppercase}
+h1,h2{font-family:Comfortaa,Manrope,sans-serif;letter-spacing:-.045em;line-height:1.17;margin:19px 0 14px}h1{font-size:clamp(36px,7vw,65px)}h2{font-size:clamp(29px,5.4vw,45px)}
+p{color:#745e6b;line-height:1.85;font-size:15px}.lead{font-size:clamp(16px,2.6vw,19px);max-width:620px}.pink{color:var(--berry)}.highlight{display:inline-block;background:#ffe6ef;border-radius:10px;padding:1px 8px;transform:rotate(-1deg)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.btn{border:0;border-radius:15px;padding:14px 19px;font-weight:800;font-size:13px;transition:transform .18s,box-shadow .18s}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px #c87c9a28}
+.primary{color:white;background:linear-gradient(135deg,#ed8eb1,#bc9ce8)}.soft{color:#985271;background:#fff0f5}.quiet{background:#f6f0f6;color:#795f71}.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.envelope{width:175px;height:124px;margin:33px auto 20px;position:relative;filter:drop-shadow(0 12px 12px #d987a933);cursor:pointer;transition:transform .25s}.envelope:hover{transform:translateY(-5px) rotate(-2deg)}.envbody{position:absolute;inset:23px 0 0;background:#f3a5c2;border-radius:8px 8px 14px 14px;overflow:hidden}.envbody:after{content:"";position:absolute;inset:0;background:#f9c6d8;clip-path:polygon(0 0,50% 60%,100% 0,100% 100%,0 100%)}.flap{position:absolute;top:23px;border-left:87px solid transparent;border-right:87px solid transparent;border-top:63px solid #e783a9;z-index:2}.seal{position:absolute;z-index:3;top:65px;left:66px;background:#fff4f8;border-radius:50%;width:43px;height:43px;display:grid;place-items:center;font-size:22px}
+.sticker{position:absolute;border-radius:13px;padding:9px 12px;background:var(--butter);box-shadow:0 4px 0 #e7d9a8;font-size:23px;transform:rotate(8deg)}.st1{right:8%;top:27%}.st2{left:8%;bottom:22%;background:var(--lilac);box-shadow:0 4px 0 #d2c4ee;transform:rotate(-9deg)}
+.paper{padding:20px 23px;background:#fff8e8;border:1px dashed #e8d08e;border-radius:19px;margin:23px 0;transform:rotate(-.5deg)}.paper p{margin:5px 0}.paper strong{color:#8d5b3a}
+.bigquote{font-family:Comfortaa,cursive;font-size:clamp(22px,4vw,34px);line-height:1.55;color:#9b5578;margin:26px 0}
+.scrapbook{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:26px 0}.polaroid{background:#fff;padding:8px 8px 13px;box-shadow:0 9px 20px #9b75801a;transform:rotate(-3deg);min-width:0}.polaroid:nth-child(2){transform:rotate(3deg) translateY(12px)}.polaroid:nth-child(3){transform:rotate(-1deg)}
+.photo{height:155px;background:linear-gradient(140deg,#ffdeea,#e6ddff);position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;color:#96677e;font-size:11px;line-height:1.5;overflow:hidden}.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.photo input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.cap{text-align:center;font-family:Comfortaa,cursive;font-size:11px;font-weight:700;margin-top:10px;line-height:1.45}.hint{font-size:11px;color:#a28b97}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:23px 0}.mini{border-radius:18px;padding:17px;border:1px solid #f5dce7;background:#fff8fb}.mini:nth-child(2){background:#f8f3ff;border-color:#e9dfff}.mini:nth-child(3){background:#fff9e7;border-color:#f4e8bb}.mini:nth-child(4){background:#effaf2;border-color:#d8efdf}.mini .emoji{font-size:25px}.mini h3{font-size:14px;margin:9px 0 5px}.mini p{font-size:12px;line-height:1.65;margin:0}
+.traits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:25px 0}.trait{border-radius:17px;padding:17px;background:#f8f2ff;border:1px solid #e8ddff;font-size:14px;font-weight:700;line-height:1.55}.trait:nth-child(2){background:#fff1f6;border-color:#f9dbe7}.trait:nth-child(3){background:#fff9e7;border-color:#f4e8bb}.trait:nth-child(4){background:#effaf2;border-color:#d8efdf}
+.promise{display:flex;gap:12px;align-items:flex-start;margin:15px 0;padding:14px 16px;border-radius:16px;background:#fff7fa;border:1px solid #f8e0e9}.promise span{font-size:21px}.promise p{margin:0;font-size:13px}
+.letter{background:#fffaf0;border:1px solid #f2dfb7;border-radius:20px;padding:clamp(20px,4vw,32px);margin:24px 0}.letter p{white-space:pre-line}.sign{font-family:Comfortaa,cursive;color:#b65c83;font-weight:700;font-size:17px}
+.final-sticker{font-size:clamp(48px,9vw,82px);text-align:center;margin:20px 0;animation:pop 1.8s ease-in-out infinite}@keyframes pop{0%,100%{transform:scale(1) rotate(-4deg)}50%{transform:scale(1.08) rotate(4deg)}}
+.footer{text-align:center;max-width:790px;margin:17px auto 0;color:#a58d99;font-size:10px}#confetti{position:fixed;inset:0;pointer-events:none;z-index:20;overflow:hidden}.confetti-piece{position:absolute;top:-20px;width:9px;height:14px;border-radius:3px;animation:fall 3.5s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.15}}.hidden{display:none!important}[contenteditable="true"]{outline-offset:4px}
+@media(max-width:600px){.shell{padding:14px 10px 25px}.scene{padding:24px 19px;border-radius:24px;min-height:0}.scrapbook{gap:7px}.photo{height:105px;font-size:9px}.polaroid{padding:5px 5px 10px}.cap{font-size:9px}.cards,.traits{gap:9px}.mini,.trait{padding:13px}.mini p{font-size:11px}.top{align-items:flex-start}.brand{max-width:65%}.actions .btn{flex:1}.paper{padding:16px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="confetti"></div>
+<main class="shell">
+<div class="top"><div class="brand">Альбом одной большой дружбы</div><div class="chapter" id="chapter">Пролог · 1 из 14</div></div>
+<div class="progress"><span id="bar"></span></div>
+
+<section class="scene active center" data-title="Пролог">
+ <span class="eyebrow">секретное послание · только для тебя</span><h1>Сонечка,<br><span class="highlight">это всё тебе.</span></h1>
+ <p class="lead">Я хотел подарить тебе не просто поздравление. А маленькое путешествие по нашей дружбе — от самого детства до всего прекрасного, что у тебя ещё впереди.</p>
+ <div class="envelope" role="button" tabindex="0" aria-label="Открыть письмо" onclick="next()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();next()}"><div class="envbody"></div><div class="flap"></div><div class="seal">С</div></div>
+ <div class="sticker st1">ура!</div><p class="hint">Открывай не спеша. Тут много всего, что я давно хотел сказать.</p>
+ <div class="actions" style="justify-content:center"><button class="btn primary" onclick="next()">Открыть наше послание →</button></div>
+</section>
+
+<section class="scene" data-title="Важное уведомление">
+ <span class="eyebrow">глава 1 · чрезвычайно важные новости</span><h2>Внимание!<br>Именинница обнаружена.</h2>
+ <div class="paper"><p><strong>ОФИЦИАЛЬНЫЙ ДОКУМЕНТ</strong></p><p>Настоящим подтверждается, что Соня сегодня становится ещё на один год удивительнее, прекраснее и легендарнее.</p><p>В комплект входят: право загадывать желания, получать объятия, смеяться без причины и помнить, что она невероятно важна для своих людей.</p></div>
+ <p>Документ подписан мной лично и не подлежит обжалованию. Особенно последняя часть.</p><div class="actions"><button class="btn primary" onclick="next()">Согласна быть легендой →</button></div>
+</section>
+
+<section class="scene" data-title="Наша дружба сквозь годы">
+ <span class="eyebrow">глава 2 · задолго до сегодняшнего дня</span><h2>Мы знакомы не просто давно.<br><span class="pink">Мы — с детства.</span></h2>
+ <p class="lead">Иногда я думаю, как же удивительно, что среди всех людей, которых мы могли встретить в этой жизни, у меня есть именно ты.</p>
+ <p>Мы росли, менялись, узнавали мир, становились старше. И вот мы здесь — у нас уже столько общего прошлого, что его не уместить в одну страницу. А впереди, я очень надеюсь, ещё целая огромная жизнь воспоминаний.</p>
+ <div class="bigquote">«Некоторые люди появляются в жизни так рано, что уже невозможно представить свою историю без них».</div><p>Ты для меня именно такой человек, Сонечка. И я правда очень рад, что ты у меня есть.</p>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">Листать дальше →</button></div>
+</section>
+
+<section class="scene" data-title="Наш альбом">
+ <span class="eyebrow">глава 3 · альбом воспоминаний</span><h2>Наши общие воспоминания<br>в одном альбоме.</h2>
+ <p>Собрал здесь фотографии из нашей истории: обычные дни, прогулки, смешные кадры и моменты, которые хочется сохранить.</p>
+ <div class="scrapbook">
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-01.jpg" alt="Фотография 1 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Один из наших выходов</div></div>
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-02.jpg" alt="Фотография 2 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Полосатый момент</div></div>
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-03.jpg" alt="Фотография 3 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Поездка и наши истории</div></div>
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-04.jpg" alt="Фотография 4 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Встреча с пушистыми друзьями</div></div>
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-05.jpg" alt="Фотография 5 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Зимний кадр вместе</div></div>
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-06.jpg" alt="Фотография 6 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Наши смешные лица</div></div>
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-07.jpg" alt="Фотография 7 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Даже дождь не помеха</div></div>
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-08.jpg" alt="Фотография 8 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Праздничный день</div></div>
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-09.jpg" alt="Фотография 9 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Просто хороший кадр</div></div>
+ <div class="polaroid"><div class="photo"><img src="photos/sonya-10.jpg" alt="Фотография 10 из альбома нашей дружбы" loading="lazy"></div><div class="cap">Ещё одно тёплое воспоминание</div></div>
+ </div>
+ <p class="hint">Все фотографии уже добавлены в альбом.</p>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">Воспоминания продолжаются →</button></div>
+</section>
+
+<section class="scene" data-title="Наши маленькие традиции">
+ <span class="eyebrow">глава 4 · то, что поймём только мы</span><h2>Есть вещи, которые<br>не объяснить посторонним.</h2><p>В каждой долгой дружбе есть свои мемы, фразы, взгляды, после которых уже невозможно сохранять серьёзное лицо.</p>
+ <div class="cards"><div class="mini"><h3>Смех не к месту</h3><p contenteditable="true">Когда достаточно одного взгляда, чтобы всё стало смешным.</p></div><div class="mini"><h3>Разговоры обо всём</h3><p contenteditable="true">От великих планов на жизнь до абсолютной ерунды — и всё важно.</p></div><div class="mini"><h3>История с детства</h3><p contenteditable="true">Столько всего было, что можно писать отдельную книгу.</p></div><div class="mini"><h3>Просто быть рядом</h3><p contenteditable="true">Не каждый момент должен быть особенным, чтобы стать дорогим.</p></div></div>
+ <p class="hint">Впиши свои реальные фразы, истории или внутренние шутки прямо в тексты карточек.</p><div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">Теперь серьёзно →</button></div>
+</section>
+
+<section class="scene" data-title="За что я тебя обожаю">
+ <span class="eyebrow">глава 5 · без шуток, на этот раз</span><h2>Знаешь, за что<br>я тебя обожаю?</h2><p class="lead">На самом деле, причин гораздо больше, чем поместится здесь. И дело не в том, чтобы быть идеальной.</p>
+ <div class="traits"><div class="trait" contenteditable="true">За то, что ты — это ты</div><div class="trait" contenteditable="true">За твою уникальность и характер</div><div class="trait" contenteditable="true">За место, которое ты занимаешь в моей жизни</div><div class="trait" contenteditable="true">За все годы, что мы разделили</div></div>
+ <p>Я обожаю тебя не за достижения, не за правильные слова и не за то, что ты всегда должна быть весёлой. Я ценю тебя целиком — настоящую, живую, со всеми твоими мыслями, мечтами и настроениями.</p>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">Есть ещё кое-что →</button></div>
+</section>
+
+<section class="scene" data-title="Ты можешь многое">
+ <span class="eyebrow">глава 6 · пожалуйста, помни об этом</span><h2>Соня, ты сможешь<br><span class="pink">так много всего.</span></h2>
+ <p class="lead">Я хочу, чтобы ты верила в себя хотя бы так сильно, как я верю в тебя.</p>
+ <p>Я не знаю заранее, какой именно путь ты выберешь, сколько раз передумаешь, какие мечты однажды станут другими. Но я верю в твою способность учиться, расти, пробовать снова, находить свои решения и строить жизнь, которая будет по-настоящему твоей.</p>
+ <p>Тебе не нужно успеть всё сразу. Не нужно постоянно быть сильной и не нужно сравнивать свой путь с чужим. Можно ошибаться, отдыхать, менять планы, начинать с нуля. Это не отменяет того, какая ты способная.</p>
+ <div class="paper"><p><strong>Запомни одну вещь:</strong></p><p>Ты не обязана знать все ответы прямо сейчас. У тебя есть время, право мечтать по-крупному и возможность шаг за шагом прийти к тому, чего ты хочешь.</p></div>
+ <p>И когда тебе самой будет сложно в это поверить, я надеюсь, ты вспомнишь: есть человек, который искренне болеет за тебя и хочет видеть, как у тебя всё получается.</p>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">Дальше →</button></div>
+</section>
+
+<section class="scene" data-title="Тебе можно быть разной">
+ <span class="eyebrow">глава 7 · без требований к идеальности</span><h2>Тебе можно быть<br>не в порядке каждую минуту.</h2>
+ <p>Ты можешь уставать. Можешь не знать, чего хочешь. Можешь грустить в день, когда все ждут от тебя улыбки. Можешь менять решения и выбирать себя.</p><p>Твоя ценность не зависит от оценок, побед, продуктивности или того, сколько всего ты успела сделать за день. Ты заслуживаешь доброты и хорошего отношения не только в свои лучшие дни.</p>
+ <div class="bigquote">«Я желаю тебе не только больших побед, но и спокойствия внутри. Не только ярких моментов, но и обычных дней, в которых тебе хорошо».</div><p>Пожалуйста, будь к себе такой же доброй, какой ты умеешь быть к людям, которых любишь.</p>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">Что я желаю тебе →</button></div>
+</section>
+
+<section class="scene" data-title="Что я желаю тебе">
+ <span class="eyebrow">глава 8 · список от всего сердца</span><h2>Пусть в твоей жизни будет…</h2>
+ <div class="promise"><p><strong>Много возможностей.</strong><br>Чтобы ты пробовала новое и находила то, от чего загораются глаза.</p></div><div class="promise"><p><strong>Надёжные люди.</strong><br>Те, с кем можно смеяться, молчать, быть собой и не заслуживать любовь.</p></div><div class="promise"><p><strong>Смелость мечтать.</strong><br>Чтобы большие цели не пугали тебя больше, чем вдохновляли.</p></div><div class="promise"><p><strong>Маленькие радости.</strong><br>Любимая музыка, вкусный чай, хорошие новости и дни, которые хочется повторить.</p></div><div class="promise"><p><strong>Любовь к себе.</strong><br>Чтобы ты видела в себе столько прекрасного, сколько я вижу в тебе.</p></div>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">От меня лично →</button></div>
+</section>
+
+<section class="scene" data-title="Я рад, что ты у меня есть">
+ <span class="eyebrow">глава 9 · самое личное</span><h2>Я правда рад,<br><span class="pink">что у меня есть ты.</span></h2>
+ <p class="lead">Не хочу, чтобы это было просто красивой фразой в поздравлении. Я действительно имею в виду каждое слово.</p>
+ <p>Мы дружим с глубокого детства, и от этого наша дружба для меня особенно дорога. Ты — часть моей истории, часть воспоминаний, которые я ношу с собой, часть того, что делает мою жизнь теплее.</p>
+ <p>Я благодарен за то, что все эти годы в моей жизни есть ты, мояшка. За то, что мы можем вспоминать прошлое, смеяться над своими историями и знать, сколько всего уже было пройдено. Мне очень хочется, чтобы впереди у нас тоже было много поводов сказать: «Ну что, помнишь?..»</p>
+ <p>Я не всегда могу подобрать идеальные слова, но надеюсь, ты чувствуешь главное: ты мне очень дорога. Я обожаю тебя и очень ценю, что жизнь подарила мне такую подругу.</p>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">Письмо на будущее →</button></div>
+</section>
+
+<section class="scene" data-title="Письмо на потом">
+ <span class="eyebrow">глава 10 · открой в любой трудный день</span><h2>Небольшое письмо<br>на будущее.</h2>
+ <div class="paper"><p><strong>Дорогая Сонечка,</strong></p><p>Если ты когда-нибудь откроешь это письмо в день, когда всё валится из рук, вспомни: один сложный день не определяет твою жизнь. Одна ошибка не перечёркивает твои способности. И даже если сейчас ты не видишь дорогу целиком, это не значит, что ты не найдёшь свой путь.</p><p>Ты уже прошла столько лет жизни, выросла, изменилась и стала собой. Впереди у тебя ещё столько открытий, новых людей, решений, радостных неожиданностей и достижений, о которых ты пока даже не знаешь.</p><p>Не торопи себя. Продолжай идти. И пожалуйста, не забывай, что ты не должна справляться со всем в одиночку.</p><p>С днём рождения, моя дорогая подруга. Пусть впереди будет больше счастья, чем ты сейчас можешь представить.</p><p class="sign">Я верю в тебя. Всегда.</p></div>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">Последняя страница письма →</button></div>
+</section>
+
+<section class="scene" data-title="Если бы я прожил детство снова">
+ <span class="eyebrow">глава 11 · признание в дружбе</span><h2>Если бы мне пришлось<br>заново прожить детство…</h2>
+ <p class="lead">…я бы очень хотел снова встретить тебя.</p>
+ <p>Я бы снова хотел, чтобы где-то среди самых ранних воспоминаний была ты. Чтобы в моей истории опять нашлось место для нашей дружбы — для разговоров, смеха, глупостей, перемен и всех тех моментов, которые со временем становятся чем-то гораздо большим, чем просто воспоминания.</p>
+ <p>Я не могу знать, как сложилась бы жизнь, если бы всё было иначе. Но я знаю, что в этой жизни я очень ценю то, что мы встретились так рано и что ты стала человеком, с которым меня связывает столько лет.</p>
+ <p>Если бы можно было вернуться в прошлое, я бы не стал просить идеального детства или идеальной истории. Я бы просто пожелал, чтобы в ней снова была ты — настоящая Соня, со своим характером, смехом, мечтами и всем тем, за что я тебя обожаю.</p>
+ <div class="bigquote">«Из всех людей, которых я мог встретить, я очень рад, что однажды встретил именно тебя».</div>
+ <p>И если впереди у нас ещё много глав, я хочу, чтобы в них тоже было место нашей дружбе. Спасибо, что ты есть.</p>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Назад</button><button class="btn primary" onclick="next()">И последнее — от всего сердца →</button></div>
+</section>
+
+<section class="scene" data-title="Большое письмо">
+ <span class="eyebrow">глава 12 · всё, что хочется сказать</span><h2>Сонечка, с днём рождения.<br>Это от всего сердца.</h2>
+ <div class="letter">
+ <p>Моя дорогая Сонечка!
+
+С днём рождения тебя, Соня! Я даже не знаю, как уместить в одном поздравлении всё, что хочется тебе сказать. Мы дружим с глубокого детства, и иногда мне кажется удивительным, сколько жизни уже прошло рядом и сколько всего ещё впереди.
+
+Я хочу, чтобы ты знала: я тебя правда обожаю. Ты для меня не просто человек из прошлого или знакомая, с которой связано много историй. Ты — важная часть моей жизни, часть моего детства и моей личной истории. И я очень рад, что у меня есть ты.
+
+Я искренне верю, что ты сможешь достичь многого. У тебя впереди целая жизнь, в которой будут возможности, новые дороги, неожиданные повороты и мечты, которые однажды станут реальностью. Не бойся хотеть большего. Не думай, что одна ошибка или один трудный период определяют, на что ты способна. Ты можешь учиться, пробовать, менять направление и идти своим темпом. Я очень хочу, чтобы ты однажды посмотрела на свою жизнь и почувствовала гордость за себя — за всё, что преодолела, за всё, чему научилась, и за человека, которым стала.
+
+Но больше всего я желаю тебе не только успеха. Я желаю тебе быть счастливой. Чтобы рядом были люди, которые ценят тебя по-настоящему. Чтобы у тебя было место, где спокойно, люди, с которыми можно быть собой, и мечты, ради которых хочется просыпаться. Чтобы ты смеялась чаще, чем переживала, и не забывала заботиться о себе.
+
+Спасибо тебе за наше детство, за все воспоминания, которые уже есть, и за всё, что мы ещё обязательно вспомним со словами: «Ну и времена были!» Спасибо, что ты есть в моей жизни. Если бы мне пришлось заново прожить детство, я бы очень хотел снова встретить тебя — потому что наша дружба для меня действительно много значит.
+
+Я не могу обещать, что всегда найду идеальные слова, но могу сказать честно: я очень дорожу тобой, обожаю тебя и искренне хочу, чтобы у тебя всё получилось. И когда у тебя будут большие победы, я буду радоваться за тебя. А когда что-то не будет складываться, я хочу, чтобы ты помнила: это не делает тебя менее прекрасной или менее способной.
+
+С днём рождения, Элпэ. Пусть жизнь будет к тебе добра. Пусть у тебя хватает смелости идти за своим, сил — продолжать, когда трудно, и людей рядом — чтобы делить с ними радость. И пусть у нас впереди будет ещё много лет дружбы, новых фотографий, смешных историй и тёплых воспоминаний.
+
+Я очень-очень рад, что у меня есть ты. С праздником, мояшка.</p>
+ <p class="sign">Обнимаю крепко. И всегда болею за тебя.</p>
+ </div>
+ <div class="actions"><button class="btn soft" onclick="prev()">← Перечитать</button><button class="btn primary" onclick="next()">К праздничному финалу →</button></div>
+</section>
+
+<section class="scene center" data-title="С днём рождения">
+ <span class="eyebrow">глава 13 · но не конец нашей истории</span>
+ <h2>С днём рождения,<br><span class="pink">мояшка!</span></h2>
+ <p class="lead">Пусть этот год станет одной из тех глав жизни, о которых ты потом будешь вспоминать с улыбкой.</p>
+ <p>Желаю тебе счастья — настоящего, твоего. Смелости — чтобы идти к мечтам. Любви — которая поддерживает. И множества маленьких причин радоваться каждому дню.</p>
+ <p>Спасибо, что ты есть в моей жизни. Спасибо за наше детство, за нашу дружбу и за всё, что у нас ещё впереди. Я тебя обожаю. И очень-очень рад, что у меня есть ты.</p>
+ <div class="actions" style="justify-content:center"><button class="btn primary" onclick="celebrate()">Открыть праздничный финал</button></div>
+ <div id="endcard" class="paper hidden"><p><strong>МИССИЯ ВЫПОЛНЕНА!</strong></p><p>Соня, этот сайт — маленькое напоминание о большой дружбе. Возвращайся к нему, когда захочется улыбнуться.</p><button class="btn soft" onclick="restart()">Пройти историю сначала ↻</button></div>
+</section>
+<div class="footer">собрано из воспоминаний, тепла и бесконечной веры в тебя</div>
+</main>
+<script>
+let idx=0;const scenes=[...document.querySelectorAll('.scene')];
+function show(n){idx=Math.max(0,Math.min(scenes.length-1,n));scenes.forEach((s,i)=>s.classList.toggle('active',i===idx));document.getElementById('chapter').textContent=(scenes[idx].dataset.title||'Глава')+' · '+(idx+1)+' из '+scenes.length;document.getElementById('bar').style.width=((idx+1)/scenes.length*100)+'%';window.scrollTo({top:0,behavior:'smooth'})}
+function next(){show(idx+1)}function prev(){show(idx-1)}
+function loadPhoto(e,n){const f=e.target.files&&e.target.files[0];if(!f)return;if(!f.type.startsWith('image/'))return;const u=URL.createObjectURL(f);const area=document.querySelector(`[data-photo="${n}"]`);let img=area.querySelector('img');if(!img){img=document.createElement('img');area.appendChild(img)}img.src=u;const span=area.querySelector('span');if(span)span.classList.add('hidden')}
+function celebrate(){document.getElementById('endcard').classList.remove('hidden');const box=document.getElementById('confetti');box.innerHTML='';const colors=['#f5a8c4','#d7c4ff','#ffe9a8','#bde8cb','#f7c6b8'];for(let i=0;i<110;i++){const p=document.createElement('i');p.className='confetti-piece';p.style.left=Math.random()*100+'vw';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.animationDelay=Math.random()*1.1+'s';p.style.animationDuration=(2.5+Math.random()*2)+'s';box.appendChild(p)}setTimeout(()=>box.innerHTML='',5500)}
+function restart(){document.getElementById('endcard').classList.add('hidden');show(0)}
+document.addEventListener('keydown',e=>{if(e.target.isContentEditable||e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev()});
+</script>
+</body></html>
